@@ -3,6 +3,7 @@ import {
     HiOutlineCog,
     HiOutlineCube,
     HiOutlineDocumentText,
+    HiOutlineLogout,
     HiOutlineQuestionMarkCircle,
     HiOutlineShoppingCart,
     HiOutlineUsers,
@@ -47,8 +48,6 @@ export const DSASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineAnnotation />
     }
 ]
-
-
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
 	{
 		key: 'settings',
@@ -61,5 +60,11 @@ export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
 		label: 'Help & Support',
 		path: '/support',
 		icon: <HiOutlineQuestionMarkCircle />
-	}
+    },
+    {
+        key: 'logout',
+        label: 'Logout',
+        path: '/logout',
+        icon: <HiOutlineLogout />
+    }
 ]
