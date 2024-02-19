@@ -1,9 +1,18 @@
-import { Popover, Transition } from '@headlessui/react'
+import { Menu, Popover, Transition } from '@headlessui/react'
 import classNames from 'classnames'
 import { Fragment } from 'react'
 import { HiOutlineBell, HiOutlineChatAlt, HiOutlineSearch } from 'react-icons/hi'
+import { useNavigate } from 'react-router-dom'
+
+const links = [
+    { href: '/account-settings', label: 'Your profile' },
+    { href: '/settings', label: 'Settings' },
+    { href: '/logout', label: 'Logout' }
+]
 
 function Header() {
+    const navigate = useNavigate()
+
     return (
         <div className="bg-white h-16 px-4 flex justify-between items-center border-b border-gray-200">
             <div className="relative">
@@ -77,9 +86,43 @@ function Header() {
                             </Transition>
                         </>
                     )}
-                </Popover>                
+                </Popover>
 
-                
+                <Menu as="div" className="relative">
+                    <div className="inline-flex">
+                        <Menu.Button className="ml-2 inline-flex rounded-full focus:outline-none focus:ring-2 focus:ring-neutral-400">
+                            <span className="sr-only">Open user menu</span>
+                            <div
+                                className="h-10 w-10 rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center"
+                                style={{ backgroundImage: `url(https://source.unsplash.com/80x80/?face)` }}
+                            >
+                                <span className="sr-only">John Due</span>
+                            </div>
+                        </Menu.Button>
+                    </div>
+
+                    <Menu.Items className="origin-top-right z-10 absolute right-0 mt-2 w-48 rounded-sm shadown-md p-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        {links.map((link) => (
+                            /* Use the `active` state to conditionally style the active item. */
+                            <Menu.Item key={link.href} as={Fragment}>
+                                {({ active }) => (
+                                    <div>
+                                        <a
+                                            onClick={() => navigate(link.href)}
+                                            href={link.href}
+                                            className={classNames(
+                                                active && 'bg-gray-100',
+                                                'text-gray-700 focus:bg-gray-200 cursor-pointer rounded-sm px-4 py-2 block hover:no-underline' 
+                                            )}
+                                        >
+                                            {link.label}
+                                        </a>
+                                    </div>
+                                )}
+                            </Menu.Item>
+                        ))}
+                    </Menu.Items>
+                </Menu>
             </div>
         </div>
     )
