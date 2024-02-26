@@ -1,3 +1,4 @@
+import BuyerProfileChart from './BuyerProfileChart'
 import DashboardStatsGrid from './DashboardStatsGrid'
 import TransactionChart from './TransactionChart'
 
@@ -7,6 +8,7 @@ function Dashboard() {
             <DashboardStatsGrid />
             <div className="flex flex-row gap-4 w-full">
                 <TransactionChart />
+                <BuyerProfileChart />
             </div>
         </div>
     )
